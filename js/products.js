@@ -196,50 +196,18 @@ function renderCategories(products) {
 }
 
 function filterProducts() {
-    let filteredProducts = [...allProducts];
+    const search = selectedSearch.trim().toLowerCase();
+    const filteredProducts = allProducts.filter(product => {
+        const text = [product.brand, product.model, product.description,
+            categories[product.categoryId]].filter(Boolean).join(" ").toLowerCase();
+        return (selectedCategory === null || product.categoryId === Number(selectedCategory)) &&
+            (selectedRating === null || Number(product.averageRating) >= Number(selectedRating)) &&
+            (!search || text.includes(search));
+    });
 
-    if (selectedCategory !== null) {
-        filteredProducts = filteredProducts.filter(
-            product =>
-                product.categoryId === Number(selectedCategory)
-        );
-    }
-
-    if (selectedRating !== null) {
-        filteredProducts = filteredProducts.filter(
-            product =>
-                Number(product.averageRating) >= Number(selectedRating)
-        );
-    }
-
-    if (selectedSearch.trim()) {
-        const searchTerm = selectedSearch.trim().toLowerCase();
-
-        filteredProducts = filteredProducts.filter(product => {
-            const searchableText = [
-                product.brand,
-                product.model,
-                product.description,
-                categories[product.categoryId],
-            ]
-                .filter(Boolean)
-                .join(" ")
-                .toLowerCase();
-
-            return searchableText.includes(searchTerm);
-        });
-    }
-
-    if (selectedSort === "low-high") {
-        filteredProducts.sort(
-            (a, b) => Number(a.price) - Number(b.price)
-        );
-    }
-
-    if (selectedSort === "high-low") {
-        filteredProducts.sort(
-            (a, b) => Number(b.price) - Number(a.price)
-        );
+    if (selectedSort) {
+        const direction = selectedSort === "low-high" ? 1 : -1;
+        filteredProducts.sort((a, b) => direction * (Number(a.price) - Number(b.price)));
     }
 
     renderProducts(filteredProducts);
@@ -250,70 +218,37 @@ categoriesContainer.addEventListener("click", event => {
 
     if (!button) return;
 
-    document.querySelectorAll(".category-btn").forEach(btn => {
-        btn.classList.remove("active");
-    });
-
+    document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
     button.classList.add("active");
-
     selectedCategory = button.dataset.category;
-
     filterProducts();
 });
 
 document.querySelectorAll('input[name="rating"]').forEach(input => {
-    input.addEventListener("change", event => {
-        selectedRating = event.target.value;
-
-        filterProducts();
-    });
+    input.addEventListener("change", event => (selectedRating = event.target.value, filterProducts()));
 });
 
-sortSelect.addEventListener("change", event => {
-    selectedSort = event.target.value;
-
-    filterProducts();
-});
+sortSelect.addEventListener("change", event => (selectedSort = event.target.value, filterProducts()));
 
 if (searchInput) {
-    searchInput.addEventListener("input", event => {
-        selectedSearch = event.target.value;
-
-        filterProducts();
-    });
+    searchInput.addEventListener("input", event => (selectedSearch = event.target.value, filterProducts()));
 }
 
 showAllButton.addEventListener("click", () => {
-    selectedCategory = null;
-    selectedRating = null;
-    selectedSort = null;
+    selectedCategory = selectedRating = selectedSort = null;
     selectedSearch = "";
 
-    document.querySelectorAll(".category-btn").forEach(button => {
-        button.classList.remove("active");
-    });
-
-    document.querySelectorAll('input[name="rating"]').forEach(input => {
-        input.checked = false;
-    });
-
+    document.querySelectorAll(".category-btn").forEach(button => button.classList.remove("active"));
+    document.querySelectorAll('input[name="rating"]').forEach(input => input.checked = false);
     sortSelect.value = "";
-
-    if (searchInput) {
-        searchInput.value = "";
-    }
-
+    if (searchInput) searchInput.value = "";
     renderProducts(allProducts);
 });
 
 document.addEventListener("click", event => {
     const productImage = event.target.closest(".product-image");
-
     if (!productImage) return;
-
-    const productId = productImage.dataset.id;
-
-    window.location.href = `./product.html?id=${productId}`;
+    window.location.href = `./product.html?id=${productImage.dataset.id}`;
 });
 
 loadProducts();
