@@ -1,18 +1,8 @@
 function checkLoginStatus() {
     const response = localStorage.getItem("response");
-    let user;
-
-    try {
-        user = response ? JSON.parse(response).body : null;
-    } catch (error) {
-        localStorage.removeItem("response");
-        localStorage.removeItem("token");
-        return;
-    }
-
-    const nav = document.querySelector(".nav");
-    if (user && nav) {
-        nav.innerHTML = `
+    const username = response ? JSON.parse(response).body.username : null;
+    if (response) {
+        document.querySelector(".nav").innerHTML = `
             <div class="logo">
                 E-commerce
             </div>
@@ -37,7 +27,7 @@ function checkLoginStatus() {
 
             <div class="user-actions">
             <a href="./pages/cart.html"><i class="fas fa-shopping-cart"></i></a>
-                <a href="./pages/userProfile.html">${user.username || "Profile"} <i class="fas fa-user"></i></a>
+                <a href="./pages/userProfile.html">${username} <i class="fas fa-user"></i></a>
                 <button type="button" id="logout-btn">
                     Logout
                 </button>
@@ -46,22 +36,10 @@ function checkLoginStatus() {
 
         document
             .getElementById("logout-btn")
-            .addEventListener("click", (event) => {
-                event.preventDefault();
+            .addEventListener("click", () => {
+                
 
-                const logout = () => {
-                    localStorage.removeItem("response");
-                    localStorage.removeItem("token");
-                    window.location.reload();
-                };
-
-                if (typeof Swal === "undefined") {
-                    if (window.confirm("Are you sure you want to log out?")) {
-                        logout();
-                    }
-                    return;
-                }
-
+                
                 Swal.fire({
                     title: "Are you sure?",
                     text: "You can log in again later.",
@@ -72,7 +50,15 @@ function checkLoginStatus() {
                     confirmButtonText: "Yes, log out!"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        logout();
+                        localStorage.removeItem("response");
+                        localStorage.removeItem("token");
+                        Swal.fire({
+                            title: "Logged out!",
+                            text: "You have been logged out.",
+                            icon: "success"
+                        }).then(() => {
+                        window.location.reload();
+                        });
                     }
                 });
             });
