@@ -55,9 +55,10 @@ productForm.addEventListener("submit", async event => {
 	saveButton.disabled = true;
 
 	try {
-		const response = await fetch(productId ? `${PRODUCT_API_URL}/${encodeURIComponent(productId)}` : PRODUCT_API_URL, {
+		const authHeaders = productHeaders();
+		const response = await fetch(PRODUCT_API_URL, {
 			method: productId ? "PUT" : "POST",
-			headers: productHeaders(),
+			headers: authHeaders,
 			body: JSON.stringify(product)
 		});
 		const data = await readProductResponse(response);

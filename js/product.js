@@ -1,3 +1,31 @@
+const PRODUCT_DETAIL_API_URL = "http://195.26.245.5:9505/api/products";
+const PRODUCT_RATING_API_URL = "http://195.26.245.5:9505/api/ratings";
+
+function getStoredToken() {
+  const directToken = localStorage.getItem("token");
+  if (directToken) return directToken;
+
+  const savedResponse = localStorage.getItem("response");
+  if (!savedResponse) return null;
+
+  try {
+    const saved = JSON.parse(savedResponse);
+    return saved.body?.token || saved.response?.body?.token || saved.respons?.body?.token || saved.token || saved.data?.token || null;
+  } catch {
+    return null;
+  }
+}
+
+function buildAuthHeaders(extraHeaders = {}) {
+  const token = getStoredToken();
+  return {
+    Accept: "*/*",
+    "Content-Type": "application/json",
+    ...extraHeaders,
+    ...(token ? { Authorization: `Bearer ${token}` } : {})
+  };
+}
+
 async function renderProductDetail() {
   const container = document.querySelector('#product-detail');
   const namePro = document.querySelector(".name-product");
@@ -23,7 +51,9 @@ async function renderProductDetail() {
   try {
     const id = new URLSearchParams(window.location.search).get('id');
 
-    const response = await fetch("http://195.26.245.5:9505/api/products");
+    const response = await fetch(PRODUCT_DETAIL_API_URL, {
+      headers: buildAuthHeaders()
+    });
     
     if (!response.ok) {
       throw new Error("API request failed");
@@ -86,13 +116,63 @@ async function renderProductDetail() {
 
       const ratingButtons = container.querySelectorAll('.rating-star');
       const ratingMessage = container.querySelector('.rating-message');
+      let alreadyRated = false;
+
       ratingButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', async () => {
+          if (alreadyRated) {
+            ratingMessage.textContent = "You have already rated this product.";
+            return;
+          }
+
           const selectedRating = Number(button.dataset.rating);
           ratingButtons.forEach(star => {
             star.classList.toggle('selected', Number(star.dataset.rating) <= selectedRating);
           });
-          ratingMessage.textContent = `You rated this product ${selectedRating} out of 5.`;
+
+          try {
+            const token = getStoredToken();
+            const ratingResponse = await fetch(PRODUCT_RATING_API_URL, {
+              method: "POST",
+              headers: buildAuthHeaders(),
+              body: JSON.stringify({
+                rating: Number(selectedRating),
+                productId: Number(id)
+              })
+            });
+
+            if (!ratingResponse.ok) {
+              const errorText = await ratingResponse.text();
+              let errorMessage = "Could not submit rating.";
+
+              try {
+                const parsed = JSON.parse(errorText);
+                if (parsed?.message) errorMessage = parsed.message;
+              } catch {
+                if (typeof errorText === "string" && errorText.trim()) errorMessage = errorText;
+              }
+
+              if (ratingResponse.status === 409 || /already rated|artiq.*qiym|qiymətləndirmisiniz/i.test(errorMessage)) {
+                alreadyRated = true;
+                ratingButtons.forEach(star => star.disabled = true);
+                ratingMessage.textContent = errorMessage || "You have already rated this product.";
+                return;
+              }
+
+              throw new Error(errorMessage || `Could not submit rating. Status: ${ratingResponse.status}`);
+            }
+
+            alreadyRated = true;
+            ratingButtons.forEach(star => star.disabled = true);
+            ratingMessage.textContent = `You rated this product ${selectedRating} out of 5.`;
+            if (token) {
+              ratingMessage.textContent += " Saved.";
+            }
+          } catch (error) {
+            const messageText = error && error.message ? error.message : "Unable to save the rating.";
+            ratingMessage.textContent = messageText;
+            console.error("Rating save failed:", error);
+          }
         });
       });
 
