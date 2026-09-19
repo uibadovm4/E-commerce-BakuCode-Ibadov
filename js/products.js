@@ -64,6 +64,13 @@ async function loadProducts() {
             ? data
             : data.content || data.products || data.items || data.data?.content || data.data?.products || [];
 
+        allProducts = await Promise.all(
+            allProducts.map(async product => ({
+                ...product,
+                averageRating: await getProductRating(product.id)
+            }))
+        );
+
         renderProducts(allProducts);
         renderCategories(allProducts);
 
@@ -73,6 +80,43 @@ async function loadProducts() {
         productsContainer.innerHTML = `
             <p>Failed to load products.</p>
         `;
+    }
+}
+
+async function getProductRating(productId) {
+    try {
+        const response = await fetch(
+            `http://195.26.245.5:9505/api/ratings/${productId}`,
+            {
+                headers: {
+                    Accept: "*/*",
+                    ...(getToken() ? { Authorization: `Bearer ${getToken()}` } : {})
+                }
+            }
+        );
+
+        if (!response.ok) return "No rating";
+
+        const data = await response.json();
+        const rating = data.averageRating ?? data.rating ?? data.ratingValue ?? data.value ?? data.score;
+
+        if (rating !== undefined && Number.isFinite(Number(rating))) {
+            return Number(rating).toFixed(1);
+        }
+
+        const ratings = Array.isArray(data)
+            ? data
+            : data.content || data.ratings || data.data || [];
+        const values = ratings
+            .map(item => Number(item.averageRating ?? item.rating ?? item.ratingValue ?? item.value ?? item.score))
+            .filter(Number.isFinite);
+
+        return values.length
+            ? (values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(1)
+            : "No rating";
+    } catch (error) {
+        console.error(`Failed to fetch rating for product ${productId}:`, error);
+        return "No rating";
     }
 }
 
