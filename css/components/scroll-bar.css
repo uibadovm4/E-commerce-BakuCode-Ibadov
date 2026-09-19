@@ -1,13 +1,11 @@
-/* =========================
-   VARIABLES & SCROLLBAR
-========================= */
+
 :root {
   --scrollbar-track: #000000;
   --scrollbar-thumb: #DB4444;
   --scrollbar-thumb-hover: #DB4444;
 }
 
-/* Modern Standart (Firefox) */
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
@@ -16,7 +14,7 @@
   box-sizing: border-box;
 }
 
-/* WebKit (Chrome, Edge, Safari) */
+
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;

@@ -37,9 +37,9 @@ function checkLoginStatus() {
         document
             .getElementById("logout-btn")
             .addEventListener("click", () => {
-                // localStorage.removeItem("response");
+                
 
-                // window.location.href = "../index.html";
+                
                 Swal.fire({
                     title: "Are you sure?",
                     text: "You can log in again later.",

@@ -60,14 +60,14 @@ body {
     gap: 80px;
 }
 
-/* Each team member */
+
 .about-bottom .about-actual-bottom .works-with-us {
     width: 250px;
     text-align: center;
     background-color: transparent;
 }
 
-/* Gray background behind the person */
+
 .about-bottom .about-actual-bottom .works-with-us .member-image {
     width: 250px;
     height: 200px;
@@ -77,27 +77,27 @@ body {
     align-items: flex-end;
 }
 
-/* Person */
+
 .about-bottom .about-actual-bottom .works-with-us img {
     width: 200px;
     height: auto;
     display: block;
 }
 
-/* Name */
+
 .about-bottom .about-actual-bottom .works-with-us h2 {
     margin: 8px 0 0;
     font-size: 21px;
     font-weight: 900;
 }
 
-/* Job title */
+
 .about-bottom .about-actual-bottom .works-with-us p {
     margin: 2px 0 5px;
     font-size: 16px;
 }
 
-/* Social links */
+
 .about-bottom .about-actual-bottom .works-with-us a {
     color: black;
     font-weight: 900;

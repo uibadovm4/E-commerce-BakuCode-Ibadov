@@ -13,7 +13,7 @@ class ECommerceKit {
 
     this.cart = this.loadCart();
 
-    // Aktif filtreler
+    
     this.filters = {
       search: "",
       category: "all",
@@ -21,15 +21,13 @@ class ECommerceKit {
       maxPrice: Infinity
     };
 
-    // Aktif sıralama
+    
     this.sortType = null;
 
     this.apply();
   }
 
-  /* =========================================================
-     PRODUCTS
-  ========================================================= */
+  
 
   get products() {
     return [...this.filteredProducts];
@@ -88,9 +86,7 @@ class ECommerceKit {
     return this;
   }
 
-  /* =========================================================
-     SEARCH
-  ========================================================= */
+  
 
   search(keyword = "") {
     this.filters.search = String(keyword).trim();
@@ -101,9 +97,7 @@ class ECommerceKit {
     return this;
   }
 
-  /* =========================================================
-     FILTER
-  ========================================================= */
+  
 
   filter({
     category = "all",
@@ -123,9 +117,7 @@ class ECommerceKit {
     return this;
   }
 
-  /* =========================================================
-     SORT
-  ========================================================= */
+  
 
   sort(type = null) {
     const validTypes = [
@@ -151,9 +143,7 @@ class ECommerceKit {
     return this;
   }
 
-  /* =========================================================
-     APPLY SEARCH + FILTER + SORT
-  ========================================================= */
+  
 
   apply() {
     const {
@@ -241,9 +231,7 @@ class ECommerceKit {
     });
   }
 
-  /* =========================================================
-     RESET
-  ========================================================= */
+  
 
   resetFilters() {
     this.filters = {
@@ -261,9 +249,7 @@ class ECommerceKit {
     return this;
   }
 
-  /* =========================================================
-     PAGINATION
-  ========================================================= */
+  
 
   get totalPages() {
     return Math.max(
@@ -337,9 +323,7 @@ class ECommerceKit {
     );
   }
 
-  /* =========================================================
-     CART
-  ========================================================= */
+  
 
   loadCart() {
     if (!this.persistCart) {
@@ -538,9 +522,7 @@ class ECommerceKit {
     };
   }
 
-  /* =========================================================
-     PRICE
-  ========================================================= */
+  
 
   formatPrice(price) {
     return `${Number(price).toFixed(2)} ${this.currency}`;
@@ -556,9 +538,7 @@ class ECommerceKit {
     );
   }
 
-  /* =========================================================
-     STATE
-  ========================================================= */
+  
 
   getState() {
     return {

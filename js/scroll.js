@@ -7,7 +7,7 @@ window.addEventListener('scroll', () => {
   }
 });
 document.documentElement.style.scrollbarWidth = 'none';
-// document.documentElement.style.scrollBehavior = 'smooth';
+
 const style = document.createElement('style');
 style.textContent = `
     html::-webkit-scrollbar {
@@ -17,29 +17,29 @@ style.textContent = `
 
 document.head.appendChild(style);
 let velocity = 0;          
-let targetVelocity = 0; // Tekerlekten gelen ham güç
+let targetVelocity = 0; 
 let currentScrollY = window.scrollY;
 
-// --- YAĞ GİBİ AKMA AYARLARI ---
-const friction = 0.90;       // Bıraktığında ne kadar kayacağı (0.90 çok dengelidir)
-const sensitivity = 0.25;    // Tekerlek hassasiyeti (Zorlanıyorsa bunu 0.35 yapabilirsin)
-const lerpFactor = 0.15;     // Hızın devreye girme yumuşaklığı (Zorlanma hissini yok eden ayar)
-// ------------------------------
+
+const friction = 0.90;       
+const sensitivity = 0.25;    
+const lerpFactor = 0.15;     
+
 
 window.addEventListener('wheel', (e) => {
   e.preventDefault(); 
-  // Tekerlek hareketini hedef hıza dönüştür
+  
   targetVelocity += e.deltaY * sensitivity;
 }, { passive: false });
 
 function smoothPhysicsScroll() {
-  // Zorlanma hissini bitiren yer: Anlık hızı, hedef hıza yumuşakça yaklaştırıyoruz
+  
   velocity += (targetVelocity - velocity) * lerpFactor;
 
-  // Hedef hızı da kendi içinde sürekli sürtünmeyle eritiyoruz
+  
   targetVelocity *= friction;
 
-  // Mikro takılmaları engellemek için sıfırlama
+  
   if (Math.abs(velocity) < 0.05) {
     velocity = 0;
     targetVelocity = 0;

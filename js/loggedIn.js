@@ -39,7 +39,7 @@ function checkLoginStatus() {
             .getElementById("logout-btn")
             .addEventListener("click", () => {
                 
-                // window.location.href = "../index.html";
+                
                 Swal.fire({
                     title: "Are you sure?",
                     text: "You can log in again later.",

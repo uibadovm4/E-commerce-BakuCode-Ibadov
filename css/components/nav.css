@@ -3,7 +3,7 @@
 
 body {
     padding-top: 140px;
-    /* Navbar'ının toplam yüksekliği kadar */
+    
 }
 
 .nav-dis {
@@ -13,11 +13,11 @@ body {
     left: 0;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
-    /* Yumuşak animasyon geçişi */
+    
 
-    /* Kaydırma yapıldığında uygulanacak stiller */
+    
     &.scrolled {
-        /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+        
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
 
@@ -34,10 +34,10 @@ body {
 
         .nav {
             min-height: 70px;
-            /* Navbar yükseklik küçülmesi */
+            
             background: rgba(34, 34, 34, 0.726);
             backdrop-filter: blur(8px);
-            /* Şık görünüm için hafif buzlu cam efekti */
+            
             transition: all 0.3s ease-in-out;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
@@ -98,17 +98,17 @@ body {
         margin: 0 1rem;
         padding: 0 2rem;
         font-family: 'Roboto', sans-serif;
-        /* background: #fff; */
+        
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 2rem;
-        /* border-bottom: 1px solid #f0f0f0; */
+        
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         transition: all 0.3s ease-in-out;
 
-        /* İçindeki diğer stiller (.logo, .pages, .search-bar vb.) aynı kalacak */
+        
 
 
 
@@ -216,9 +216,7 @@ body {
 
 }
 
-/* =========================
-TABLET
-========================= */
+
 
 @media (max-width: 1024px) {
 
@@ -252,9 +250,7 @@ TABLET
 
 }
 
-/* =========================
-MOBILE
-========================= */
+
 
 @media (max-width: 768px) {
 
@@ -320,9 +316,7 @@ MOBILE
 
 }
 
-/* =========================
-SMALL MOBILE
-========================= */
+
 
 @media (max-width: 480px) {
 

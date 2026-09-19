@@ -29,7 +29,7 @@ body{
 }
 
 
-/* PRODUCTS */
+
 
 .cart-products {
     width: 750px;
@@ -63,7 +63,7 @@ body{
 }
 
 
-/* PRODUCT */
+
 
 .cart-product {
     display: flex;
@@ -87,14 +87,14 @@ body{
 }
 
 
-/* PRICE */
+
 
 .cart-price {
     font-size: 14px;
 }
 
 
-/* QUANTITY */
+
 
 .cart-quantity {
     width: 55px;
@@ -110,7 +110,7 @@ body{
 }
 
 
-/* SUBTOTAL */
+
 
 .cart-subtotal {
     font-size: 14px;
@@ -118,7 +118,7 @@ body{
 }
 
 
-/* REMOVE */
+
 
 .cart-remove {
     width: 65px;
@@ -141,7 +141,7 @@ body{
 }
 
 
-/* TOTAL BOX */
+
 
 .cart-total {
     width: 300px;
@@ -183,7 +183,7 @@ body{
 }
 
 
-/* CHECKOUT */
+
 
 .checkout-btn {
     display: block;
@@ -209,7 +209,7 @@ body{
 }
 
 
-/* RESPONSIVE */
+
 
 @media (max-width: 900px) {
 

@@ -108,5 +108,5 @@ async function renderProductDetail() {
   }
 }
 
-// Detay sayfasını yükle
+
 renderProductDetail();

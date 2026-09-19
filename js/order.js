@@ -2,13 +2,13 @@ const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const checkoutUser = JSON.parse(localStorage.getItem('checkoutUser')) || null;
 const orderData = JSON.parse(localStorage.getItem('orderData')) || {};
 
-// Order Summary Elements
+
 const customerName = document.getElementById('customer-name');
 const customerEmail = document.getElementById('customer-email');
 const customerPhone = document.getElementById('customer-phone');
 const customerAddress = document.getElementById('customer-address');
 
-// Total Price Element
+
 const totalPriceElement = document.getElementById('order-total');
 const countdownElement = document.getElementById('countdown');
 

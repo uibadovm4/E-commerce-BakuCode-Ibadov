@@ -50,26 +50,26 @@ body {
 
     .collection {
         display: grid;
-        /* Sütunları sabit 548px olarak ayarla */
+        
         grid-template-columns: 548px 548px;
         gap: 20px;
-        /* Toplam genişliği sabitle ve tüm grid'i ortala */
+        
         width: 1116px;
         margin: 0 auto;
     }
 }
 
-/* Sol Taraftaki Dikey Büyük Kart */
+
 .s-col {
     width: 548px;
-    /* Sabit px genişlik kaldırıldı */
+    
     height: 668px;
     background: #f0f0f0;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
     color: #000;
-    /* Büyük kartın yüksekliğini 2 satıra eşit tutmak için */
+    
     grid-row: span 2;
 }
 
@@ -105,10 +105,10 @@ body {
     margin-left: 3px;
 }
 
-/* Sağ Taraftaki Yatay Küçük Kartlar */
+
 .s-col-2 {
     width: 548px;
-    /* Sabit px genişlik kaldırıldı */
+    
     height: 312px;
     background: #f0f0f0;
     border-radius: 5px;
@@ -151,9 +151,9 @@ body {
 
 .shop-feat {
     width: 1116px;
-    /* Aşağıdaki .collection ile aynı genişlik */
+    
     margin: 0 auto 20px auto;
-    /* Üst:0, Sağ/Sol: Auto (Ortalar), Alt: 20px */
+    
     text-align: start;
     font-family: Arial, sans-serif;
     font-size: 30px;
@@ -166,8 +166,8 @@ body {
     height: 668px;
     background-image: url('../../assets/man.jpg');
     background-size: cover;
-    /* border-radius: 5px; */
-    /* position: relative; */
+    
+    
     overflow: hidden;
     color: #000;
 }
@@ -175,7 +175,7 @@ body {
 .promotion-container {
     display: flex;
     justify-content: space-between;
-    /* gap: 20px; */
+    
     width: 100%;
     margin: 0 auto;
 }
@@ -183,8 +183,8 @@ body {
     width: 50%;
     height: 668px;
     background-color: #FFAB0066;
-    /* border-radius: 5px; */
-    /* position: relative; */
+    
+    
     overflow: hidden;
     .pro-right-top-text{
         padding: 50px;
@@ -348,10 +348,10 @@ body {
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    /* display: flex; */
+    
     flex-direction: column;
     align-items: center;
-    /* text-align: center; */
+    
     transition: 1s;
     h3{
         text-align: start;
@@ -377,7 +377,7 @@ body {
 }
 .review:hover{
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
-    /* transform: translateY(-5px); */
+    
     background-color: #db444488;
     p{
         color: #ffffff;
@@ -395,12 +395,12 @@ body {
     background-color: #ffffff;
     border-radius: 5px;
     padding: 20px;
-    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    
     h3{
         text-align: start;
         font-size: 50px;
         font-weight: 200;
-        /* color: #DB4444; */
+        
         margin-bottom: 10px;
     }
     p{
@@ -428,7 +428,7 @@ body {
     }
 }
 
-/* #F9F9F9 */
+
 
 .product:nth-child(2){
     width: 25%;
@@ -436,12 +436,12 @@ body {
     background-color: #F9F9F9;
     border-radius: 5px;
     padding: 20px;
-    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    
     h3{
         text-align: start;
         font-size: 50px;
         font-weight: 200;
-        /* color: #DB4444; */
+        
         margin-bottom: 10px;
     }
     p{
@@ -469,7 +469,7 @@ body {
     }
 }
 
-/* #EAEAEA */
+
 
     .product:nth-child(3){
         width: 25%;
@@ -477,12 +477,12 @@ body {
         background-color: #EAEAEA;
         border-radius: 5px;
         padding: 20px;
-        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+        
         h3{
             text-align: start;
             font-size: 50px;
             font-weight: 200;
-            /* color: #DB4444; */
+            
             margin-bottom: 10px;
         }
         p{
@@ -510,7 +510,7 @@ body {
         }
     }
 
-/* #2C2C2C */
+
 
 .product:nth-child(4){
     width: 25%;
@@ -518,7 +518,7 @@ body {
     background-color: #2C2C2C;
     border-radius: 5px;
     padding: 20px;
-    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    
     h3{
         text-align: start;
         font-size: 50px;
@@ -551,9 +551,7 @@ body {
     }
 }
 
-/* =========================
-   TABLET RESPONSIVE
-========================= */
+
 
 @media (max-width: 1200px) {
 
@@ -587,9 +585,7 @@ body {
 }
 
 
-/* =========================
-   TABLET / SMALL LAPTOP
-========================= */
+
 
 @media (max-width: 900px) {
 
@@ -610,7 +606,7 @@ body {
     }
 
 
-    /* PROMOTION */
+    
 
     .promotion-container {
         flex-direction: column;
@@ -622,7 +618,7 @@ body {
     }
 
 
-    /* SPECIAL BANNER */
+    
 
     .special-banner {
         height: auto;
@@ -643,7 +639,7 @@ body {
     }
 
 
-    /* REVIEWS */
+    
 
     .reviews {
         flex-wrap: wrap;
@@ -654,7 +650,7 @@ body {
     }
 
 
-    /* PRODUCTS */
+    
 
     .explore {
         height: auto;
@@ -673,13 +669,11 @@ body {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+
 
 @media (max-width: 768px) {
 
-    /* HERO */
+    
 
     .hero {
         height: auto;
@@ -692,7 +686,7 @@ body {
     }
 
 
-    /* COLLECTION */
+    
 
     .collection-container {
         padding: 15px;
@@ -722,7 +716,7 @@ body {
     }
 
 
-    /* PROMOTION */
+    
 
     .pro-left,
     .pro-right {
@@ -747,7 +741,7 @@ body {
     }
 
 
-    /* SPECIAL BANNER */
+    
 
     .special-banner {
 
@@ -767,7 +761,7 @@ body {
     }
 
 
-    /* REVIEWS */
+    
 
     .feedback-title {
         font-size: 25px;
@@ -785,7 +779,7 @@ body {
     }
 
 
-    /* PRODUCTS */
+    
 
     .explore {
         height: auto;
@@ -814,9 +808,7 @@ body {
 }
 
 
-/* =========================
-   SMALL MOBILE
-========================= */
+
 
 @media (max-width: 480px) {
 
@@ -831,7 +823,7 @@ body {
     }
 
 
-    /* COLLECTION */
+    
 
     .s-col {
         height: 400px;
@@ -852,7 +844,7 @@ body {
     }
 
 
-    /* PROMOTION */
+    
 
     .pro-left {
         height: 400px;
@@ -895,7 +887,7 @@ body {
     }
 
 
-    /* SPECIAL BANNER */
+    
 
     .special-banner {
 
@@ -919,7 +911,7 @@ body {
     }
 
 
-    /* REVIEW */
+    
 
     .review {
         width: 100%;
@@ -935,7 +927,7 @@ body {
     }
 
 
-    /* PRODUCTS */
+    
 
     .product,
     .product:nth-child(2),
