@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Caacupe+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    padding-top: 140px;
+    /* Navbar'ının toplam yüksekliği kadar */
+}
+
+.nav-dis {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    /* Yumuşak animasyon geçişi */
+
+    /* Kaydırma yapıldığında uygulanacak stiller */
+    &.scrolled {
+        /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        .discount {
+            max-height: 0;
+            min-height: 0;
+            padding: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .nav {
+            min-height: 70px;
+            /* Navbar yükseklik küçülmesi */
+            background: rgba(34, 34, 34, 0.726);
+            backdrop-filter: blur(8px);
+            /* Şık görünüm için hafif buzlu cam efekti */
+            transition: all 0.3s ease-in-out;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            .logo {
+                color: white;
+            }
+
+            .pages a {
+                color: white;
+            }
+
+            .search-bar input {
+                background: #ffffff6c;
+            }
+
+            .search-bar input::placeholder {
+                color: #ffffff;
+            }
+
+            .search-bar i {
+                color: #ffffff;
+            }
+
+            .user-actions a {
+                color: white;
+            }
+
+            .user-actions i {
+                color: white;
+            }
+        }
+    }
+
+    .discount {
+        width: 100%;
+        min-height: 50px;
+        color: #fff;
+        background: #202020;
+        padding: 1rem;
+        text-align: center;
+        font-family: 'Caacupe One', sans-serif;
+        font-size: 1.2rem;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        transition: all 0.3s ease-in-out;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    }
+
+    .nav {
+        width: calc(100% - 2rem);
+        min-height: 80px;
+        margin: 0 1rem;
+        padding: 0 2rem;
+        font-family: 'Roboto', sans-serif;
+        /* background: #fff; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        /* border-bottom: 1px solid #f0f0f0; */
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        transition: all 0.3s ease-in-out;
+
+        /* İçindeki diğer stiller (.logo, .pages, .search-bar vb.) aynı kalacak */
+
+
+
+        .logo {
+            color: black;
+            font-size: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .pages {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            a {
+                color: black;
+                text-decoration: none;
+                font-size: 1.2rem;
+                white-space: nowrap;
+            }
+
+            .shop-link {
+                width: 100px;
+                height: 40px;
+                background: #DB4444;
+                color: white;
+                border-radius: 5px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .search-bar {
+            input {
+                width: 300px;
+                height: 40px;
+                border-radius: 5px;
+                padding: 0.5rem;
+
+                border: 1px solid #ccc;
+                background: #f0f0f0;
+            }
+
+            input::placeholder {
+                color: #000;
+                font-size: 1rem;
+            }
+
+            input:focus {
+                outline: none;
+            }
+        }
+
+        .login {
+            a {
+                width: 100px;
+                height: 40px;
+                background: #DB4444;
+                color: white;
+                border-radius: 5px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                text-decoration: none;
+            }
+        }
+    }
+
+
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    #logout-btn {
+        width: 100px;
+        height: 40px;
+        background: #DB4444;
+        color: white;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    a {
+        font-size: large;
+        color: black;
+        text-decoration: none;
+    }
+
+
+}
+
+/* =========================
+TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+    .nav-dis {
+        z-index: 1000;
+
+        .nav {
+            width: calc(100% - 1rem);
+            margin: 0 0.5rem;
+
+            padding: 1rem;
+            gap: 1rem;
+
+            .search-bar {
+
+                input {
+                    width: 200px;
+                }
+            }
+
+            .pages {
+                gap: 0.7rem;
+
+                a {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .nav-dis {
+        z-index: 1000;
+
+        .discount {
+            font-size: 1rem;
+            padding: 0.8rem;
+        }
+
+        .nav {
+            width: calc(100% - 1rem);
+            margin: 0 0.5rem;
+
+            height: auto;
+            min-height: auto;
+            padding: 1rem;
+
+            flex-direction: column;
+            gap: 1rem;
+
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .pages {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                a {
+                    font-size: 1rem;
+                }
+            }
+
+            .search-bar {
+                width: 100%;
+
+                input {
+                    width: 100%;
+                }
+            }
+
+            .login {
+                width: 100%;
+
+                a {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .user-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+
+}
+
+/* =========================
+SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .nav-dis {
+        z-index: 1000;
+
+        .discount {
+            font-size: 0.9rem;
+        }
+
+        .nav {
+            width: calc(100% - 1rem);
+            margin: 0 0.5rem;
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .pages {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+
+                a {
+                    width: 100%;
+                    text-align: center;
+                    padding: 0.5rem;
+                }
+
+                .shop-link {
+                    width: 100%;
+                }
+            }
+
+            .search-bar {
+
+                input {
+                    height: 45px;
+                }
+            }
+        }
+    }
+
+    .user-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+
+        #logout-button {
+            width: 100%;
+        }
+    }
+
+
+}

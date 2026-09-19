@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Caacupe+One&display=swap');
+
+
+footer {
+  background: #202020;
+  color: white;
+  padding-top: 38px;
+}
+
+.footer-container {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 35px;
+  padding-bottom: 40px;
+}
+
+.footer-column {
+  min-width: 100px;
+}
+
+.footer-column h2 {
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.footer-column h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.footer-column p,
+.footer-column a {
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.footer-column small {
+  font-size: 10px;
+}
+
+.email-box {
+  width: 115px;
+  height: 26px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  margin-top: 8px;
+}
+
+.email-box input {
+  width: 80px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 8px;
+}
+
+.email-box input::placeholder {
+  color: #ffffff;
+}
+
+.download {
+  display: flex;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.qr {
+  /* width: 42px; */
+  height: 50px;
+  background: white;
+}
+
+.store {
+  background: black;
+  color: white;
+  font-size: 7px;
+  width: 60px;
+  height: 19px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socials {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+}
+
+.copyright {
+  font-family: 'Caacupe One', cursive;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  text-align: center;
+  padding: 10px;
+  color: rgba(255,255,255,0.3);
+  font-size: 12px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+
+    footer {
+        padding: 35px 25px 0;
+    }
+
+    .footer-container {
+        max-width: 100%;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding-bottom: 35px;
+    }
+
+    .footer-column {
+        min-width: 140px;
+        flex: 1;
+    }
+
+    .footer-column h2 {
+        font-size: 22px;
+    }
+
+    .footer-column h3 {
+        font-size: 17px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+        font-size: 13px;
+    }
+
+    .email-box {
+        width: 160px;
+        height: 35px;
+    }
+
+    .email-box input {
+        width: 120px;
+        font-size: 11px;
+    }
+
+    .qr {
+        height: 60px;
+    }
+
+    .store {
+        width: 80px;
+        height: 25px;
+        font-size: 9px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    footer {
+        padding: 30px 20px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        padding-bottom: 30px;
+    }
+
+    .footer-column {
+        width: 100%;
+    }
+
+    .footer-column h2 {
+        font-size: 24px;
+    }
+
+    .footer-column h3 {
+        font-size: 18px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+        font-size: 14px;
+    }
+
+    .footer-column small {
+        font-size: 11px;
+    }
+
+    .email-box {
+        width: 200px;
+        height: 38px;
+    }
+
+    .email-box input {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    .download {
+        gap: 10px;
+    }
+
+    .qr {
+        height: 65px;
+    }
+
+    .store {
+        width: 100px;
+        height: 30px;
+        font-size: 10px;
+    }
+
+    .socials {
+        font-size: 16px;
+        gap: 20px;
+    }
+
+    .copyright {
+        font-size: 11px;
+        padding: 15px 10px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .footer-column h2 {
+        font-size: 21px;
+    }
+
+    .footer-column h3 {
+        font-size: 16px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+        font-size: 13px;
+    }
+
+    .email-box {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .email-box input {
+        width: 80%;
+    }
+
+    .download {
+        flex-wrap: wrap;
+    }
+
+    .copyright {
+        font-size: 10px;
+    }
+}

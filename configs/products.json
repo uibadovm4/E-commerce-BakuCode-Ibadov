@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "brand": "Dell",
+    "model": "XPS 13",
+    "description": "13-inch laptop with Intel Core i7 processor",
+    "price": 1299.99,
+    "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "categoryId": 1,
+    "averageRating": 4.3
+  },
+  {
+    "id": 2,
+    "brand": "Apple",
+    "model": "MacBook Air M3",
+    "description": "Lightweight laptop powered by the Apple M3 chip",
+    "price": 1099.99,
+    "imageUrl": "https://images.unsplash.com/photo-1517336714739-489689fd1ca8",
+    "categoryId": 1,
+    "averageRating": 4.8
+  },
+  {
+    "id": 3,
+    "brand": "ASUS",
+    "model": "ROG Zephyrus G14",
+    "description": "Compact gaming laptop with powerful performance",
+    "price": 1599.99,
+    "imageUrl": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6",
+    "categoryId": 1,
+    "averageRating": 4.6
+  },
+  {
+    "id": 4,
+    "brand": "Apple",
+    "model": "iPhone 15 Pro",
+    "description": "Premium smartphone with A17 Pro chip and titanium design",
+    "price": 999.99,
+    "imageUrl": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd",
+    "categoryId": 2,
+    "averageRating": 4.7
+  },
+  {
+    "id": 5,
+    "brand": "Samsung",
+    "model": "Galaxy S24 Ultra",
+    "description": "Flagship smartphone with an advanced camera system",
+    "price": 1199.99,
+    "imageUrl": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
+    "categoryId": 2,
+    "averageRating": 4.8
+  },
+  {
+    "id": 6,
+    "brand": "Sony",
+    "model": "WH-1000XM5",
+    "description": "Wireless noise-cancelling headphones with premium sound",
+    "price": 349.99,
+    "imageUrl": "https://images.unsplash.com/photo-1546435770-a3e426bf472b",
+    "categoryId": 3,
+    "averageRating": 4.6
+  },
+  {
+    "id": 7,
+    "brand": "Apple",
+    "model": "AirPods Pro 2",
+    "description": "Wireless earbuds with active noise cancellation",
+    "price": 249.99,
+    "imageUrl": "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434",
+    "categoryId": 3,
+    "averageRating": 4.5
+  },
+  {
+    "id": 8,
+    "brand": "Logitech",
+    "model": "G Pro X Keyboard",
+    "description": "Professional mechanical gaming keyboard with RGB lighting",
+    "price": 129.99,
+    "imageUrl": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+    "categoryId": 4,
+    "averageRating": 4.4
+  },
+  {
+    "id": 9,
+    "brand": "Nike",
+    "model": "Air Max 270",
+    "description": "Comfortable everyday sneakers with Air Max cushioning",
+    "price": 149.99,
+    "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+    "categoryId": 5,
+    "averageRating": 4.5
+  },
+  {
+    "id": 10,
+    "brand": "Adidas",
+    "model": "Ultraboost 22",
+    "description": "Performance running shoes designed for maximum comfort",
+    "price": 139.99,
+    "imageUrl": "https://images.unsplash.com/photo-1608231387042-66d1773070a5",
+    "categoryId": 5,
+    "averageRating": 4.6
+  },
+  {
+    "id": 11,
+    "brand": "Adidas",
+    "model": "Essentials Hoodie",
+    "description": "Soft fleece hoodie with a relaxed everyday fit",
+    "price": 64.99,
+    "imageUrl": "https://images.unsplash.com/photo-1556821840-3a63f95609a7",
+    "categoryId": 6,
+    "averageRating": 4.3
+  },
+  {
+    "id": 12,
+    "brand": "Levi's",
+    "model": "501 Original Jeans",
+    "description": "Classic straight-fit denim jeans with a timeless design",
+    "price": 79.99,
+    "imageUrl": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+    "categoryId": 6,
+    "averageRating": 4.5
+  },
+  {
+    "id": 13,
+    "brand": "Canon",
+    "model": "EOS R10",
+    "description": "Mirrorless camera with fast autofocus and 4K video",
+    "price": 879.99,
+    "imageUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+    "categoryId": 7,
+    "averageRating": 4.7
+  },
+  {
+    "id": 14,
+    "brand": "Samsung",
+    "model": "Galaxy Watch 6",
+    "description": "Smartwatch with fitness tracking and health monitoring",
+    "price": 249.99,
+    "imageUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+    "categoryId": 8,
+    "averageRating": 4.4
+  },
+  {
+    "id": 15,
+    "brand": "Sony",
+    "model": "PlayStation 5",
+    "description": "Next-generation gaming console with an ultra-fast SSD",
+    "price": 499.99,
+    "imageUrl": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db",
+    "categoryId": 9,
+    "averageRating": 4.9
+  },
+  {
+    "id": 16,
+    "brand": "LG",
+    "model": "UltraGear 27",
+    "description": "27-inch gaming monitor with a high refresh rate",
+    "price": 299.99,
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf",
+    "categoryId": 10,
+    "averageRating": 4.5
+  },
+  {
+    "id": 17,
+    "brand": "Nike",
+    "model": "Tech Fleece Jacket",
+    "description": "Modern lightweight jacket made with premium fleece fabric",
+    "price": 119.99,
+    "imageUrl": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+    "categoryId": 6,
+    "averageRating": 4.2
+  },
+  {
+    "id": 18,
+    "brand": "Bose",
+    "model": "SoundLink Flex",
+    "description": "Portable Bluetooth speaker with powerful sound",
+    "price": 149.99,
+    "imageUrl": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+    "categoryId": 3,
+    "averageRating": 4.7
+  },
+  {
+    "id": 19,
+    "brand": "Ray-Ban",
+    "model": "Wayfarer Classic",
+    "description": "Iconic sunglasses with a classic frame design",
+    "price": 169.99,
+    "imageUrl": "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+    "categoryId": 11,
+    "averageRating": 4.4
+  },
+  {
+    "id": 20,
+    "brand": "Anker",
+    "model": "PowerCore 20K",
+    "description": "High-capacity portable power bank with fast charging",
+    "price": 49.99,
+    "imageUrl": "https://images.unsplash.com/photo-1609592424262-4a0a3b7c4e20",
+    "categoryId": 4,
+    "averageRating": 4.6
+  }
+]

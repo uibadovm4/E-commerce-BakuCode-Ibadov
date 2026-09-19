@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css">
+    <link rel="stylesheet" href="../css/pages/userProducts.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-dis">
+            <div class="discount">Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="./shop.html">Shop Now</a></div>
+            <div class="nav">
+                <div class="logo">E-commerce</div>
+                <div class="pages">
+                    <a href="../index.html">Home</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                    <a href="./userProducts.html">Your Products</a>
+                    <a class="shop-link" href="./shop.html">Shop</a>
+                </div>
+                <div class="login"><a href="./login.html">Login</a></div>
+            </div>
+        </div>
+
+        <main class="products-page">
+            <div class="products-heading">
+                <div>
+                    <p class="eyebrow">Inventory</p>
+                    <h1 id="form-title">Create product</h1>
+                </div>
+                <a class="secondary-button" href="./userProducts.html">Back to products</a>
+            </div>
+
+            <section class="product-form-panel">
+                <form id="product-form">
+                    <div class="form-grid">
+                        <label>Brand<input id="brand" name="brand" required></label>
+                        <label>Model<input id="model" name="model" required></label>
+                        <label>Category
+                            <select id="category" name="categoryId" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="1">Laptops</option>
+                                <option value="2">Gaming</option>
+                                <option value="3">Accessories</option>
+                                <option value="4">Electronics</option>
+                                <option value="5">Audio</option>
+                                <option value="6">Phones</option>
+                                <option value="7">Tablets</option>
+                                <option value="8">TV</option>
+                                <option value="9">SmartPhones</option>
+                                <option value="10">HeadPhones</option>
+                                <option value="11">Personal Computers</option>
+                            </select>
+                        </label>
+                        <label>Price<input id="price" name="price" type="number" min="0" step="0.01" required></label>
+                        <label>Image URL<input id="imageUrl" name="imageUrl" type="url"></label>
+                        <label class="full-width">Description<textarea id="description" name="description" rows="5" required></textarea></label>
+                    </div>
+                    <div class="form-actions">
+                        <a class="secondary-button" href="./userProducts.html">Cancel</a>
+                        <button class="primary-button" id="save-product-button" type="submit">Save product</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="copyright">© Copyright Rimel 2022. All right reserved</div>
+    </footer>
+    <script src="../js/loggedIn.js"></script>
+    <script src="../js/product-api.js"></script>
+    <script src="../js/product-form.js"></script>
+</body>
+</html>

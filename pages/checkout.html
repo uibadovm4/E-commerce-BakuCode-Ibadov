@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - E-commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css">
+    <link rel="stylesheet" href="../css/pages/register.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <!-- Ödeme formu için eklediğimiz yeni CSS dosyası -->
+    <link rel="stylesheet" href="../css/pages/checkout.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/scroll.js"></script>
+    <!-- <script src="../js/checkout.js"></script> -->
+</head>
+<style>
+    /* Ödeme Formı Genel Alanı */
+.checkout-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.checkout-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.checkout-col {
+    flex: 1;
+}
+
+/* Input ve Label Stilleri */
+.checkout-form .form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-form label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.checkout-form input[type="text"],
+.checkout-form input[type="email"],
+.checkout-form input[type="tel"],
+.checkout-form select {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    outline: none;
+    background-color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.checkout-form input:focus,
+.checkout-form select:focus {
+    border-color: #888;
+}
+
+/* Kısaltılmış zip inputu */
+.checkout-form .short-input input {
+    width: 120px;
+}
+
+/* Yanyana Gelen Inputlar (MM / YY / CVC) */
+.checkout-form .inline-fields {
+    display: flex;
+    gap: 15px;
+}
+
+.checkout-form .inline-fields .form-group {
+    flex: 1;
+}
+
+/* Checkbox Alanı */
+.checkout-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.checkout-form .checkbox-group input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.checkout-form .checkbox-group label {
+    margin-bottom: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Kredi Kartı Logoları */
+.checkout-form .card-brands {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    height: 30px;
+}
+
+.checkout-form .card-brands img {
+    height: 22px;
+    object-fit: contain;
+}
+
+/* Fiyat Özet Tablosu */
+.checkout-form .order-summary {
+    margin-top: 30px;
+}
+
+.checkout-form .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+    color: #222;
+}
+
+.checkout-form .summary-row.total {
+    border-bottom: none;
+    font-size: 20px;
+}
+
+/* Siparişi Onayla Butonu */
+.checkout-form .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.checkout-form .place-order-btn {
+    background-color: #db4444;
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.checkout-form .place-order-btn:hover {
+    background-color: #be3232;
+}
+
+/* Responsive (Mobil Uyum) */
+@media (max-width: 768px) {
+    .checkout-form {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .checkout-form .short-input input {
+        width: 100%;
+    }
+}
+</style>
+<body>
+    <div class="container">
+        <div class="nav-dis">
+            <div class="discount">
+                Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="./shop.html">Shop Now</a>
+            </div>
+            <div class="nav">
+                <div class="logo">
+                    E-commerce
+                </div>
+                <div class="pages">
+                    <a href="../index.html">Home</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                    <a href="./register.html">Sign Up</a>
+                    <a class="shop-link" href="./shop.html">Shop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="What are you looking for?" id="search">
+                    <label for="search"><i class="fas fa-search"></i></label>
+                </div>
+                <div class="login">
+                    <a href="./login.html">Login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÖDEME FORMU BAŞLANGICI -->
+        <div class="checkout-wrapper">
+            <form class="checkout-form" onsubmit="event.preventDefault();">
+                <!-- Sol Taraf: Teslimat Bilgileri -->
+                <div class="checkout-col">
+                    <div class="form-group">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state" required>
+                            <option value="" disabled selected>Choose...</option>
+                            <option value="us">United States</option>
+                            <option value="tr">Turkey</option>
+                            <option value="az">Azerbaijan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" required>
+                    </div>
+
+                    <div class="form-group short-input">
+                        <label for="zip">Zip</label>
+                        <input type="text" id="zip" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tel">Tel</label>
+                        <input type="tel" id="tel" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Agree to terms and conditions</label>
+                    </div>
+                </div>
+
+                <!-- Sağ Taraf: Kart Bilgileri ve Özet -->
+                <div class="checkout-col">
+                    <div class="card-brands">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Visa_Inc._logo_%282005%E2%80%932014%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="Amex">
+                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Discover_Card_logo.svg/1920px-Discover_Card_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Discover">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Maestro">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/JCB_logo.svg" alt="JCB">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-number">Card number</label>
+                        <input type="text" id="card-number" placeholder="xxxx xxxx xxxx xxxx" maxlength="16" required>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label for="exp-month">Expiration(MM)</label>
+                            <input type="text" id="exp-month" maxlength="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exp-year">Expiration(YY)</label>
+                            <input type="text" id="exp-year" maxlength="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvc">Card security code</label>
+                            <input type="text" id="cvc" maxlength="4" required>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span class="subtotal-amount">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span class="total-amount">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-container">
+                        <button type="submit" class="place-order-btn">Place order</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ÖDEME FORMU BİTİŞİ -->
+
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h2>Exclusive</h2>
+                <h3>Subscribe</h3>
+                <p>Get 10% off your first order</p>
+                <div class="email-box">
+                    <input type="email" placeholder="Enter your email">
+                    <span>➤</span>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <p>111 Bijoy sarani, Dhaka,<br>DH 1515, Bangladesh.</p>
+                <p>exclusive@gmail.com</p>
+                <p>+88015-88888-9999</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Account</h3>
+                <a href="./pages/account.html">My Account</a>
+                <a href="./pages/login.html">Login / Register</a>
+                <a href="./pages/cart.html">Cart</a>
+                <a href="./pages/wishlist.html">Wishlist</a>
+                <a href="./pages/shop.html">Shop</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Link</h3>
+                <a href="./pages/privacy.html">Privacy Policy</a>
+                <a href="./pages/terms.html">Terms Of Use</a>
+                <a href="./pages/faq.html">FAQ</a>
+                <a href="./pages/contact.html">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Download App</h3>
+                <small>Save $3 with App New User Only</small>
+                <div class="download">
+                    <img src="../assets/qr/qr.png" class="qr" alt="QR Code">
+                    <div>
+                        <div class="store">▶ Google Play</div>
+                        <div class="store"> App Store</div>
+                    </div>
+                </div>
+                <div class="socials">
+                    <span>f</span>
+                    <span>𝕏</span>
+                    <span>◎</span>
+                    <span>in</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © Copyright Rimel 2022. All right reserved
+        </div>
+    </footer>
+    <script src="../js/checkout.js"></script>
+    <script src="../js/loggedIn.js"></script>
+</body>
+
+</html>

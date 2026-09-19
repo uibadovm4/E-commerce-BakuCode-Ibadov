@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css">
+    <link rel="stylesheet" href="../css/pages/register.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <style>
+.contact-section {
+    width: 100%;
+    max-width: 1190px;
+    margin: 35px auto;
+    display: flex;
+    gap: 88px;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* LEFT CARD */
+
+.contact-section-info {
+    width: 340px;
+    min-height: 455px;
+    padding: 40px 35px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-section-block {
+    width: 100%;
+}
+
+.contact-section-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.contact-section-title h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    font-family: Arial, sans-serif;
+}
+
+.contact-section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #c6534d;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+    font-family: Arial, sans-serif;
+}
+
+.contact-section-block p {
+    margin: 0 0 20px;
+    color: #111;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+}
+
+.contact-section-divider {
+    width: 100%;
+    height: 1px;
+    background: #888;
+    margin: 32px 0;
+}
+
+
+/* RIGHT FORM */
+
+.contact-section-form {
+    flex: 1;
+    min-height: 455px;
+    padding: 40px 32px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-section-form form {
+    width: 100%;
+}
+
+.contact-section-input-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.contact-section-input-row input {
+    flex: 1;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #f5f5f5;
+
+    padding: 0 16px;
+    box-sizing: border-box;
+
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    color: #111;
+}
+
+.contact-section-input-row input::placeholder {
+    color: #777;
+}
+
+.contact-section-input-row input:focus,
+.contact-section-form textarea:focus {
+    outline: 1px solid #c6534d;
+}
+
+
+/* TEXTAREA */
+
+.contact-section-form textarea {
+    width: 100%;
+    height: 207px;
+    margin-top: 32px;
+
+    border: none;
+    outline: none;
+    resize: none;
+
+    background: #f5f5f5;
+
+    padding: 18px 16px;
+    box-sizing: border-box;
+
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    color: #111;
+}
+
+.contact-section-form textarea::placeholder {
+    color: #777;
+}
+
+
+/* BUTTON */
+
+.contact-section-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 31px;
+}
+
+.contact-section-button-wrapper button {
+    width: 215px;
+    height: 57px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #c6534d;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Arial, sans-serif;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.contact-section-button-wrapper button:hover {
+    background: #ad4640;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .contact-section {
+        padding: 0 20px;
+        gap: 30px;
+    }
+
+    .contact-section-info {
+        width: 300px;
+    }
+
+    .contact-section-input-row {
+        flex-direction: column;
+    }
+
+    .contact-section-input-row input {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .contact-section {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .contact-section-info,
+    .contact-section-form {
+        width: 100%;
+    }
+
+    .contact-section-form {
+        min-height: auto;
+    }
+
+    .contact-section-button-wrapper {
+        justify-content: stretch;
+    }
+
+    .contact-section-button-wrapper button {
+        width: 100%;
+    }
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/scroll.js"></script>
+</head>
+
+<body>
+        <div class="nav-dis">
+            <div class="discount">
+                Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="./shop.html">Shop
+                    Now</a>
+            </div>
+            <div class="nav">
+                <div class="logo">
+                    E-commerce
+                </div>
+                <div class="pages">
+                    <a href="../index.html">Home</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                    <a href="./register.html">Sign Up</a>
+                    <a class="shop-link" href="./shop.html">Shop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="What are you looking for?" id="search">
+                    <label for="search"><i class="fas fa-search"></i></label>
+                </div>
+                <div class="login">
+                    <a href="./login.html">Login</a>
+                </div>
+            </div>
+        </div>
+
+<section class="contact-section">
+    <div class="contact-section-info">
+
+        <div class="contact-section-block">
+            <div class="contact-section-title">
+                <div class="contact-section-icon">⌕</div>
+                <h3>Call To Us</h3>
+            </div>
+
+            <p>We are available 24/7, 7 days a week.</p>
+            <p>Phone: +8801611112222</p>
+        </div>
+
+        <div class="contact-section-divider"></div>
+
+        <div class="contact-section-block">
+            <div class="contact-section-title">
+                <div class="contact-section-icon">✉</div>
+                <h3>Write To US</h3>
+            </div>
+
+            <p>Fill out our form and we will contact<br>
+            you within 24 hours.</p>
+
+            <p>Emails: customer@exclusive.com</p>
+            <p>Emails: support@exclusive.com</p>
+        </div>
+
+    </div>
+
+
+    <div class="contact-section-form">
+        <form>
+
+            <div class="contact-section-input-row">
+                <input
+                    type="text"
+                    placeholder="Your Name *"
+                    required
+                >
+
+                <input
+                    type="email"
+                    placeholder="Your Email *"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    placeholder="Your Phone *"
+                    required
+                >
+            </div>
+
+            <textarea
+                placeholder="Your Message *"
+                required
+            ></textarea>
+
+            <div class="contact-section-button-wrapper">
+                <button type="submit">
+                    Send Message
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-column">
+                <h2>Exclusive</h2>
+                <h3>Subscribe</h3>
+                <p>Get 10% off your first order</p>
+
+                <div class="email-box">
+                    <input type="email" placeholder="Enter your email">
+                    <span>➤</span>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <p>111 Bijoy sarani, Dhaka,<br>DH 1515, Bangladesh.</p>
+                <p>exclusive@gmail.com</p>
+                <p>+88015-88888-9999</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Account</h3>
+                <a href="./pages/account.html">My Account</a>
+                <a href="./pages/login.html">Login / Register</a>
+                <a href="./pages/cart.html">Cart</a>
+                <a href="./pages/wishlist.html">Wishlist</a>
+                <a href="./pages/shop.html">Shop</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Link</h3>
+                <a href="./pages/privacy.html">Privacy Policy</a>
+                <a href="./pages/terms.html">Terms Of Use</a>
+                <a href="./pages/faq.html">FAQ</a>
+                <a href="./pages/contact.html">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Download App</h3>
+                <small>Save $3 with App New User Only</small>
+
+                <div class="download">
+                    <img src="../assets/qr/qr.png" class="qr">
+
+                    <div>
+                        <div class="store">▶ Google Play</div>
+                        <div class="store"> App Store</div>
+                    </div>
+                </div>
+
+                <div class="socials">
+                    <span>f</span>
+                    <span>𝕏</span>
+                    <span>◎</span>
+                    <span>in</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © Copyright Rimel 2022. All right reserved
+        </div>
+    </footer>
+    <script src="../js/loggedIn.js"></script>
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".contact-section-form form");
+
+  if (!form) return;
+
+  const nameInput = form.querySelector('input[type="text"]');
+  const emailInput = form.querySelector('input[type="email"]');
+  const phoneInput = form.querySelector('input[type="tel"]');
+  const messageInput = form.querySelector("textarea");
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  if (
+    !nameInput ||
+    !emailInput ||
+    !phoneInput ||
+    !messageInput ||
+    !submitButton
+  ) {
+    return;
+  }
+
+  const statusMessage = document.createElement("p");
+  statusMessage.style.marginTop = "15px";
+  form.appendChild(statusMessage);
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const message = messageInput.value.trim();
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    statusMessage.textContent = "";
+
+    try {
+      const response = await fetch(
+        "https://vercel-api-six-beige.vercel.app/api/contact",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            subject: `Contact message from ${name}`,
+            message
+          })
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Unable to send your message.");
+      }
+
+      statusMessage.textContent = "Your message has been sent successfully.";
+      statusMessage.style.color = "#3f8f62";
+      form.reset();
+    } catch (error) {
+      statusMessage.textContent =
+        error.message || "Unable to send your message.";
+      statusMessage.style.color = "#c6534d";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Send Message";
+    }
+  });
+});
+</script>
+
+
+</body>
+
+</html>

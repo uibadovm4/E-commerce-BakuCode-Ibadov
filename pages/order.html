@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css">
+    <link rel="stylesheet" href="../css/pages/register.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/components/nav.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/scroll.js"></script>
+</head>
+<style>
+    .order-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        height: 500px;
+        margin: 60px auto;
+        padding: 0 24px;
+    }
+    .order-left-info, .order-right-done {
+        flex: 1;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-radius: 10px;
+    }
+    .order-left-info h3, .order-right-done h3 {
+        margin-bottom: 20px;
+    }
+    .order-info h3 {
+        margin: 10px 0;
+    }
+    .total {
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .back-home {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #111827;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .back-home:hover {
+        background-color: #333;
+    }
+    .order-right-done p {
+        margin-top: 10px;
+    }
+    .order-right-done {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .order-right-done h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .order-right-done p {
+        font-size: 16px;
+        color: #555;
+    }
+    .order-left-info h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .order-info {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .order-info h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .total {
+        font-size: 20px;
+        color: #111827;
+    }
+    .order-container {
+        gap: 20px;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="nav-dis">
+            <div class="discount">
+                Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="./shop.html">Shop
+                    Now</a>
+            </div>
+            <div class="nav">
+                <div class="logo">
+                    E-commerce
+                </div>
+                <div class="pages">
+                    <a href="../index.html">Home</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                    <a href="./register.html">Sign Up</a>
+                    <a class="shop-link" href="./shop.html">Shop</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="What are you looking for?" id="search">
+                    <label for="search"><i class="fas fa-search"></i></label>
+                </div>
+                <div class="login">
+                    <a href="./login.html">Login</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-container">
+            <div class="order-left-info">
+                <h2>Order Summary</h2>
+                <div class="order-info" id="order-info">
+                    <h3>Name: <span id="customer-name"></span></h3>
+                    <h3>Email: <span id="customer-email"></span></h3>
+                    <h3>Number: <span id="customer-number"></span></h3>
+                    <h3>Address: <span id="customer-address"></span></h3>
+                    <div class="total">Total: <span id="order-total"></span></div>
+                </div>
+            </div>
+            <div class="order-right-done">
+                <h3>Thank you for your order!</h3>
+                <p>Your order has been successfully placed. We will send you a email shortly.</p>
+                <br>
+                <span>You will be redirected after : <b id="countdown">5</b> seconds</span>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-column">
+                <h2>Exclusive</h2>
+                <h3>Subscribe</h3>
+                <p>Get 10% off your first order</p>
+
+                <div class="email-box">
+                    <input type="email" placeholder="Enter your email">
+                    <span>➤</span>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <p>111 Bijoy sarani, Dhaka,<br>DH 1515, Bangladesh.</p>
+                <p>exclusive@gmail.com</p>
+                <p>+88015-88888-9999</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Account</h3>
+                <a href="./pages/account.html">My Account</a>
+                <a href="./pages/login.html">Login / Register</a>
+                <a href="./pages/cart.html">Cart</a>
+                <a href="./pages/wishlist.html">Wishlist</a>
+                <a href="./pages/shop.html">Shop</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Link</h3>
+                <a href="./pages/privacy.html">Privacy Policy</a>
+                <a href="./pages/terms.html">Terms Of Use</a>
+                <a href="./pages/faq.html">FAQ</a>
+                <a href="./pages/contact.html">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Download App</h3>
+                <small>Save $3 with App New User Only</small>
+
+                <div class="download">
+                    <img src="../assets/qr/qr.png" class="qr">
+
+                    <div>
+                        <div class="store">▶ Google Play</div>
+                        <div class="store"> App Store</div>
+                    </div>
+                </div>
+
+                <div class="socials">
+                    <span>f</span>
+                    <span>𝕏</span>
+                    <span>◎</span>
+                    <span>in</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © Copyright Rimel 2022. All right reserved
+        </div>
+    </footer>
+    <script src="../js/loggedIn.js"></script>
+    <script src="../js/order.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,489 @@
+/* =========================================================
+   IBADOV — PREMIUM SCROLL REVEAL
+   ========================================================= */
+
+.ibadov-animation {
+    --red: #DB4444;
+    --red-bright: #ff5555;
+    --red-glow: rgba(219, 68, 68, 0.65);
+
+    width: 100%;
+    height: 180px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 38px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   AMBIENT GLOW
+   ========================================================= */
+
+.ibadov-animation::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 150px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        ellipse,
+        rgba(219, 68, 68, 0.12),
+        transparent 70%
+    );
+
+    filter: blur(30px);
+
+    opacity: 0;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.5s ease;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+.ibadov-animation.active::before {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.3);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.ibadov-logo {
+    display: flex;
+
+    gap: 14px;
+
+    flex-shrink: 0;
+
+    position: relative;
+    z-index: 5;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        scale(.82);
+
+    filter: blur(8px);
+
+    transition:
+        opacity .8s ease,
+        transform 1.1s cubic-bezier(.16, 1, .3, 1),
+        filter 1s ease;
+}
+
+
+/* Individual letters */
+
+.ibadov-logo span {
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(28px, 4vw, 58px);
+
+    font-weight: 500;
+
+    letter-spacing: 4px;
+
+    color: #080808;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px)
+        rotateX(70deg);
+
+    filter: blur(5px);
+
+    text-shadow:
+        0 0 0 transparent;
+
+    transition:
+        opacity .55s ease,
+        transform .8s cubic-bezier(.16, 1, .3, 1),
+        filter .7s ease,
+        text-shadow .8s ease;
+}
+
+
+/* =========================================================
+   LETTER STAGGER
+   ========================================================= */
+
+.ibadov-animation.active .ibadov-logo {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter: blur(0);
+}
+
+
+.ibadov-animation.active .ibadov-logo span {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        rotateX(0);
+
+    filter: blur(0);
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,.35),
+        0 0 15px rgba(219,68,68,.25);
+}
+
+
+/* Each letter arrives separately */
+
+.ibadov-animation.active .ibadov-logo span:nth-child(1) {
+    transition-delay: .15s;
+}
+
+.ibadov-animation.active .ibadov-logo span:nth-child(2) {
+    transition-delay: .22s;
+}
+
+.ibadov-animation.active .ibadov-logo span:nth-child(3) {
+    transition-delay: .29s;
+}
+
+.ibadov-animation.active .ibadov-logo span:nth-child(4) {
+    transition-delay: .36s;
+}
+
+.ibadov-animation.active .ibadov-logo span:nth-child(5) {
+    transition-delay: .43s;
+}
+
+.ibadov-animation.active .ibadov-logo span:nth-child(6) {
+    transition-delay: .50s;
+}
+
+
+/* =========================================================
+   LINES
+   ========================================================= */
+
+.ibadov-line {
+
+    height: 2px;
+
+    width: 0;
+
+    opacity: 0;
+
+    position: relative;
+
+    flex-shrink: 1;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        var(--red-bright)
+    );
+
+    box-shadow:
+        0 0 4px var(--red),
+        0 0 12px var(--red),
+        0 0 25px var(--red-glow);
+
+    transition:
+        width 1.35s cubic-bezier(.16, 1, .3, 1),
+        opacity .4s ease;
+}
+
+
+/* Right side direction */
+
+.ibadov-line-right {
+
+    background: linear-gradient(
+        90deg,
+        var(--red-bright),
+        var(--red),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   GLOWING LINE ENDS
+   ========================================================= */
+
+.ibadov-line::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    background: #ff8585;
+
+    box-shadow:
+        0 0 5px #ff4444,
+        0 0 12px #ff4444,
+        0 0 25px #ff4444,
+        0 0 45px rgba(255,40,40,.5);
+
+    opacity: 0;
+
+    transition:
+        opacity .4s ease;
+}
+
+
+.ibadov-line-left::after {
+    right: 0;
+}
+
+.ibadov-line-right::after {
+    left: 0;
+}
+
+
+/* =========================================================
+   ANIMATED LIGHT TRAVELING THROUGH LINE
+   ========================================================= */
+
+.ibadov-line::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -3px;
+
+    width: 80px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.9),
+        transparent
+    );
+
+    filter: blur(2px);
+
+    opacity: 0;
+}
+
+
+.ibadov-line-left::before {
+
+    right: 0;
+
+    transform: translateX(100%);
+}
+
+
+.ibadov-line-right::before {
+
+    left: 0;
+
+    transform: translateX(-100%);
+}
+
+
+/* =========================================================
+   ACTIVE LINES
+   ========================================================= */
+
+.ibadov-animation.active .ibadov-line {
+
+    width: min(27vw, 430px);
+
+    opacity: 1;
+}
+
+
+.ibadov-animation.active .ibadov-line::after {
+
+    opacity: 1;
+}
+
+
+/* Moving energy */
+
+.ibadov-animation.active .ibadov-line-left::before {
+
+    opacity: 1;
+
+    animation:
+        energyLeft 1.5s
+        cubic-bezier(.16, 1, .3, 1)
+        .45s
+        forwards;
+}
+
+
+.ibadov-animation.active .ibadov-line-right::before {
+
+    opacity: 1;
+
+    animation:
+        energyRight 1.5s
+        cubic-bezier(.16, 1, .3, 1)
+        .55s
+        forwards;
+}
+
+
+@keyframes energyLeft {
+
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-900%);
+    }
+}
+
+
+@keyframes energyRight {
+
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(900%);
+    }
+}
+
+
+/* =========================================================
+   PULSE AFTER REVEAL
+   ========================================================= */
+
+.ibadov-animation.active .ibadov-line {
+
+    animation:
+        linePulse 3s
+        ease-in-out
+        1.8s
+        infinite alternate;
+}
+
+
+@keyframes linePulse {
+
+    0% {
+        filter: brightness(1);
+    }
+
+    100% {
+        filter: brightness(1.35);
+    }
+}
+
+
+/* =========================================================
+   SCANLINE
+   ========================================================= */
+
+.ibadov-animation::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 0;
+    height: 1px;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(255,255,255,.25);
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.2);
+
+    opacity: 0;
+
+    transition:
+        width 1s ease,
+        opacity .5s ease;
+}
+
+
+.ibadov-animation.active::after {
+
+    width: 90%;
+
+    opacity: .15;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .ibadov-animation {
+
+        gap: 14px;
+
+        height: 140px;
+    }
+
+    .ibadov-logo {
+
+        gap: 5px;
+    }
+
+    .ibadov-logo span {
+
+        font-size: 22px;
+
+        letter-spacing: 2px;
+    }
+
+    .ibadov-animation.active .ibadov-line {
+
+        width: 18vw;
+    }
+}

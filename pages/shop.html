@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css">
+  <link rel="stylesheet" href="../css/pages/register.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/components/nav.css">
+  <!-- <script src="../js/products.js"></script> -->
+  <!-- <script src="../js/add-tocart.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../Ibadov-modules/E-commerce/E-commerce.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script src="../js/scroll.js"></script>
+</head>
+<style>
+  .shop-container {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1400px;
+    margin: auto;
+  }
+
+
+  /* =========================
+   FILTERS
+========================= */
+
+  .filters {
+    width: 250px;
+    min-width: 250px;
+
+    background: white;
+
+    padding: 20px;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+
+    height: fit-content;
+  }
+
+
+  .filter-header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    margin-bottom: 25px;
+  }
+
+
+  .filter-header h2 {
+    margin: 0;
+  }
+
+
+  #showAllProducts {
+    width: 100%;
+
+    padding: 10px;
+
+    background: black;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+  }
+
+
+  .filter-section {
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e5e5;
+
+    margin-top: 20px;
+  }
+
+
+  .filter-section h3 {
+    margin-bottom: 15px;
+  }
+
+
+  #searchInput {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+
+  #searchInput:focus {
+    border-color: #111;
+    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+    background: #fff;
+  }
+
+
+  .filter-option {
+    display: block;
+
+    margin-bottom: 12px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+  }
+
+
+  .filter-option input {
+    margin-right: 8px;
+  }
+
+
+  /* =========================
+   CATEGORIES
+========================= */
+
+  .category-btn {
+    width: 100%;
+
+    padding: 10px;
+
+    margin-bottom: 8px;
+
+    text-align: left;
+
+    background: #f5f5f5;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+  }
+
+
+  .category-btn:hover {
+    background: black;
+    color: white;
+  }
+
+
+  .category-btn.active {
+    background: black;
+    color: white;
+  }
+
+
+  /* =========================
+   PRODUCTS SECTION
+========================= */
+
+  .products-section {
+    flex: 1;
+  }
+
+
+  .products-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+  }
+
+
+  .products-header h1 {
+    margin: 0;
+  }
+
+
+  /* =========================
+   PRODUCTS GRID
+========================= */
+
+  #products {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 20px;
+  }
+
+
+  .product-card {
+    min-height: 400px;
+
+    padding: 15px;
+
+    background-color: #ffffff;
+
+    border-radius: 8px;
+
+    border: 1px solid #eeeeee;
+
+    overflow: hidden;
+
+    transition: 0.2s;
+  }
+
+
+  .product-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+
+  .product-card img {
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: contain;
+
+    cursor: pointer;
+  }
+
+
+  .product-brand {
+    font-size: 14px;
+
+    color: gray;
+  }
+
+
+  .product-card h3 {
+    font-size: 20px;
+
+    margin-top: 10px;
+  }
+
+
+  .product-description {
+    font-size: 14px;
+
+    color: #666;
+
+    margin-top: 10px;
+  }
+
+
+  .product-rating {
+    margin-top: 10px;
+  }
+
+
+  .product-rating span {
+    color: orange;
+  }
+
+
+  .product-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 15px;
+  }
+
+
+  .product-price {
+    font-size: 18px;
+
+    font-weight: bold;
+  }
+
+
+  .add-tocart {
+    padding: 10px 15px;
+
+    background-color: black;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+  }
+
+
+  /* =========================
+   RESPONSIVE
+========================= */
+
+  @media (max-width: 1000px) {
+
+    #products {
+      grid-template-columns:
+        repeat(2, 1fr);
+    }
+
+  }
+
+
+  @media (max-width: 700px) {
+
+    .shop-container {
+      flex-direction: column;
+    }
+
+
+    .filters {
+      width: 100%;
+    }
+
+
+    #products {
+      grid-template-columns:
+        repeat(1, 1fr);
+    }
+
+  }
+
+  #sortProducts {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .swal2-input {
+    width: 100% !important;
+    height: 40px !important;
+    padding: 10px 12px !important;
+    box-sizing: border-box !important;
+    border-radius: 5px !important;
+    font-size: 14px !important;
+  }
+</style>
+
+<body>
+  <header>
+
+    <div class="nav-dis">
+      <div class="discount">
+        Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="./shop.html">Shop
+          Now</a>
+      </div>
+      <div class="nav">
+        <div class="logo">
+          E-commerce
+        </div>
+        <div class="pages">
+          <a href="../index.html">Home</a>
+          <a href="./about.html">About</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./register.html">Sign Up</a>
+          <a class="shop-link" href="./shop.html">Shop</a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="What are you looking for?" id="search">
+          <label for="search"><i class="fas fa-search"></i></label>
+        </div>
+        <div class="login">
+          <a href="./login.html">Login</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="shop-container">
+
+    <!-- SIDEBAR -->
+    <aside class="filters">
+
+      <div class="filter-header">
+        <h2>Filters</h2>
+
+        <button id="showAllProducts">
+          Show All Products
+        </button>
+      </div>
+      <div class="filter-section">
+        <input type="text" class="search" id="searchInput" placeholder="Search products..." />
+      </div>
+
+      <!-- CATEGORIES -->
+      <!-- CATEGORIES -->
+      <div class="filter-section">
+        <h3>Categories</h3>
+
+        <div id="categories"></div>
+      </div>
+
+      <!-- PRICE -->
+      <div class="filter-section">
+        <h3>Sort by Price</h3>
+
+        <select id="sortProducts">
+          <option value="">Default</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+        </select>
+      </div>
+
+
+      <!-- RATINGS -->
+      <div class="filter-section">
+
+        <h3>Rating</h3>
+
+        <label class="filter-option">
+          <input type="radio" name="rating" value="4">
+
+          ★ 4.0 & Up
+        </label>
+
+
+        <label class="filter-option">
+          <input type="radio" name="rating" value="3">
+
+          ★ 3.0 & Up
+        </label>
+
+
+        <label class="filter-option">
+          <input type="radio" name="rating" value="2">
+
+          ★ 2.0 & Up
+        </label>
+
+
+        <label class="filter-option">
+          <input type="radio" name="rating" value="1">
+
+          ★ 1.0 & Up
+        </label>
+
+      </div>
+
+    </aside>
+
+
+    <!-- PRODUCTS -->
+    <section class="products-section">
+
+      <div class="products-header">
+
+        <h1>Products</h1>
+
+        <span id="productCount">
+          0 Products
+        </span>
+
+      </div>
+
+
+      <div class="products test-list" id="products">
+
+        <!-- Products -->
+
+      </div>
+      <div class="pagination"></div>
+    </section>
+
+  </main>
+  <footer>
+    <div class="footer-container">
+
+      <div class="footer-column">
+        <h2>Exclusive</h2>
+        <h3>Subscribe</h3>
+        <p>Get 10% off your first order</p>
+
+        <div class="email-box">
+          <input type="email" placeholder="Enter your email">
+          <span>➤</span>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Support</h3>
+        <p>111 Bijoy sarani, Dhaka,<br>DH 1515, Bangladesh.</p>
+        <p>exclusive@gmail.com</p>
+        <p>+88015-88888-9999</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Account</h3>
+        <a href="./pages/account.html">My Account</a>
+        <a href="./pages/login.html">Login / Register</a>
+        <a href="./pages/cart.html">Cart</a>
+        <a href="./pages/wishlist.html">Wishlist</a>
+        <a href="./pages/shop.html">Shop</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Link</h3>
+        <a href="./pages/privacy.html">Privacy Policy</a>
+        <a href="./pages/terms.html">Terms Of Use</a>
+        <a href="./pages/faq.html">FAQ</a>
+        <a href="./pages/contact.html">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Download App</h3>
+        <small>Save $3 with App New User Only</small>
+
+        <div class="download">
+          <img src="../assets/qr/qr.png" class="qr">
+
+          <div>
+            <div class="store">▶ Google Play</div>
+            <div class="store"> App Store</div>
+          </div>
+        </div>
+
+        <div class="socials">
+          <span>f</span>
+          <span>𝕏</span>
+          <span>◎</span>
+          <span>in</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © Copyright Rimel 2022. All right reserved
+    </div>
+  </footer>
+  <script src="../js/products.js"></script>
+  <script src="../js/add-tocart.js"></script>
+  <script src="../js/loggedIn.js"></script>
+  <script>
+    var monkeyList = new List('test-list', {
+      valueNames: ['product-card'],
+      page: 3,
+      pagination: true
+    });
+  </script>
+</body>
+
+</html>

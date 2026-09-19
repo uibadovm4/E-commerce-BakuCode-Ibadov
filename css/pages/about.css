@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.about-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    box-sizing: border-box;
+}
+
+.about-left {
+    width: 50%;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+}
+
+.about-left p {
+    width: 100%;
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+.about-right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-right img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.about-bottom {
+    width: 100%;
+}
+
+.about-bottom .about-top img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.about-bottom .about-actual-bottom {
+    padding-bottom: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+/* Each team member */
+.about-bottom .about-actual-bottom .works-with-us {
+    width: 250px;
+    text-align: center;
+    background-color: transparent;
+}
+
+/* Gray background behind the person */
+.about-bottom .about-actual-bottom .works-with-us .member-image {
+    width: 250px;
+    height: 200px;
+    background-color: #e2e2e2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Person */
+.about-bottom .about-actual-bottom .works-with-us img {
+    width: 200px;
+    height: auto;
+    display: block;
+}
+
+/* Name */
+.about-bottom .about-actual-bottom .works-with-us h2 {
+    margin: 8px 0 0;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+/* Job title */
+.about-bottom .about-actual-bottom .works-with-us p {
+    margin: 2px 0 5px;
+    font-size: 16px;
+}
+
+/* Social links */
+.about-bottom .about-actual-bottom .works-with-us a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+    margin: 0 4px;
+}
