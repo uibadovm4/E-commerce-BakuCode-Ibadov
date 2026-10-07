@@ -39,14 +39,23 @@ if (checkoutForm) {
         event.preventDefault();
 
         const checkoutUser = {
-            name: document.getElementById('first-name').value.trim(),
-            surname: document.getElementById('last-name').value.trim(),
+            firstName: document.getElementById('first-name').value.trim(),
+            lastName: document.getElementById('last-name').value.trim(),
             email: document.getElementById('email').value.trim(),
             address: document.getElementById('address').value.trim(),
             city: document.getElementById('city').value.trim(),
-            state: document.getElementById('state').value,
-            zip: document.getElementById('zip').value.trim(),
-            number: document.getElementById('tel').value.trim()
+            stateId: +document.getElementById('state').value,
+            zip: +document.getElementById('zip').value.trim(),
+            phone: document.getElementById('tel').value.trim(),
+            isAgree: true,
+            cardNumber: +document.getElementById('card-number').value,
+            expirationMonth: +document.getElementById('exp-month').value,
+            expirationYear: +document.getElementById('exp-year').value,
+            cardSecurityCode: + document.getElementById('cvc').value,
+            products: cartItems.map(cart => ({
+                productId: cart.productId,
+                quantity: cart.howMany
+            }))
         };
 
         localStorage.setItem(
@@ -54,27 +63,39 @@ if (checkoutForm) {
             JSON.stringify(checkoutUser)
         );
 
-        const orderData = {
-            products: cartItems,
-            subtotal: calculateCartTotal(),
-            shipping: 0,
-            total: calculateCartTotal(),
-            user: checkoutUser,
-            date: new Date().toISOString()
-        };
+        fetch('http://195.26.245.5:9505/api/orders', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(checkoutUser)
+        })
+            .then(response => {
+                if (response.ok) {
+                    Swal.fire({
+                        title: 'Order Placed!',
+                        text: 'Your order has been placed successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        const orderData = {
+                            products: cartItems,
+                            subtotal: calculateCartTotal(),
+                            shipping: 0,
+                            total: calculateCartTotal(),
+                            user: checkoutUser,
+                            date: new Date().toISOString()
+                        };
+                        localStorage.setItem(
+                            'orderData',
+                            JSON.stringify(orderData)
+                        );
 
-        localStorage.setItem(
-            'orderData',
-            JSON.stringify(orderData)
-        );
+                        window.location.href = 'order.html';
+                    });
+                }
+            })
 
-        Swal.fire({
-            title: 'Order Placed!',
-            text: 'Your order has been placed successfully.',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        }).then(() => {
-            window.location.href = 'order.html';
-        });
     });
 }

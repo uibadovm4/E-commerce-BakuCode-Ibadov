@@ -31,7 +31,7 @@ function displayOrderSummary() {
     if (checkoutUser) {
 
         if (customerName) {
-            customerName.textContent = checkoutUser.name || '-';
+            customerName.textContent = checkoutUser.firstName + ' ' + checkoutUser.lastName || '-';
         }
 
         if (customerEmail) {
@@ -39,7 +39,7 @@ function displayOrderSummary() {
         }
 
         if (customerPhone) {
-            customerPhone.textContent = checkoutUser.number || '-';
+            customerPhone.textContent = checkoutUser.phone || '-';
         }
 
         if (customerAddress) {
