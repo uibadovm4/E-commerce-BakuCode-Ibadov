@@ -5,7 +5,7 @@ const orderData = JSON.parse(localStorage.getItem('orderData')) || {};
 
 const customerName = document.getElementById('customer-name');
 const customerEmail = document.getElementById('customer-email');
-const customerPhone = document.getElementById('customer-phone');
+const customerPhone = document.getElementById('customer-number');
 const customerAddress = document.getElementById('customer-address');
 
 
@@ -31,7 +31,7 @@ function displayOrderSummary() {
     if (checkoutUser) {
 
         if (customerName) {
-            customerName.textContent = checkoutUser.firstName + ' ' + checkoutUser.lastName || '-';
+            customerName.textContent = checkoutUser.firstName || '-';
         }
 
         if (customerEmail) {

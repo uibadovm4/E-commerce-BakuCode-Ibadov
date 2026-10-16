@@ -62,11 +62,11 @@ if (checkoutForm) {
             'checkoutUser',
             JSON.stringify(checkoutUser)
         );
-
+        const token = localStorage.getItem('token');
         fetch('http://195.26.245.5:9505/api/orders', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(checkoutUser)

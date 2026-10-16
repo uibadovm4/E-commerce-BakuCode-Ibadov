@@ -49,7 +49,7 @@ function isInvalidProductSession(response, data) {
 }
 
 async function fetchMyProducts() {
-    const firstPageResponse = await fetch(`${PRODUCT_API_URL}/myProducts?page=1&size=1`, {
+    const firstPageResponse = await fetch(`${PRODUCT_API_URL}/myProducts?page=0&size=10`, {
         headers: productHeaders()
     });
     const firstPage = await readProductResponse(firstPageResponse);
@@ -62,7 +62,7 @@ async function fetchMyProducts() {
     const products = [...getProductsFromResponse(firstPage)];
 
     for (let page = 2; page <= totalPages; page += 1) {
-        const response = await fetch(`${PRODUCT_API_URL}/myProducts?page=${page}&size=1`, {
+        const response = await fetch(`${PRODUCT_API_URL}/myProducts?page=${page}&size=10`, {
             headers: productHeaders()
         });
         const data = await readProductResponse(response);

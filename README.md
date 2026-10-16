@@ -31,7 +31,7 @@ https://uibadovm4.github.io/E-commerce-BakuCode-Ibadov/
 
 This project integrates with a backend product API.
 
-- API Docs: https://vercel-api-six-beige.vercel.app/docs/
+- API Docs: http://195.26.245.5:9505/swagger-ui/index.html
 - Product API Base URL: http://195.26.245.5:9505/api/products
 
 ## Features

@@ -12,6 +12,10 @@ document.addEventListener("click", (event) => {
     const image = product.querySelector(".product-image").src;
     const priceText = product.querySelector(".product-price").textContent.trim();
     const price = Number(priceText.replace(/[^0-9.]/g, ""));
+   const productId = Number(product.querySelector(".product-image").dataset.id);
+
+    console.log(productId);
+    
 
     const cartItem = {
         name,
@@ -19,6 +23,7 @@ document.addEventListener("click", (event) => {
         image,
         price,
         howMany: 1,
+        productId: productId
     };
 
     const storedItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
